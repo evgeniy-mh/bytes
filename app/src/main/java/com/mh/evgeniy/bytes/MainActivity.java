@@ -128,20 +128,43 @@ public class MainActivity extends AppCompatActivity {
         mButtonStringHashMap.put(mButtonRightBracket,")");
 
         mButtonDiv=(Button) findViewById(R.id.buttonDiv);
+        mButtonStringHashMap.put(mButtonDiv,"/");
+
         mButtonRoL=(Button) findViewById(R.id.buttonRoL);
         mButtonRor=(Button) findViewById(R.id.buttonRor);
+
         mButtonMul=(Button) findViewById(R.id.buttonMul);
+        mButtonStringHashMap.put(mButtonMul,"*");
+
         mButtonOr=(Button) findViewById(R.id.buttonOr);
         mButtonXor=(Button) findViewById(R.id.buttonXor);
+
         mButtonMinus=(Button) findViewById(R.id.buttonMinus);
+        mButtonStringHashMap.put(mButtonMinus,"-");
+
         mButtonLsh=(Button) findViewById(R.id.buttonLsh);
         mButtonRsh=(Button) findViewById(R.id.buttonRsh);
+
         mButtonComma=(Button) findViewById(R.id.buttonComma);
+        mButtonStringHashMap.put(mButtonComma,",");
+
         mButtonPlus=(Button) findViewById(R.id.buttonPlus);
+        mButtonStringHashMap.put(mButtonPlus,"+");
+
         mButtonNot=(Button) findViewById(R.id.buttonNot);
         mButtonAnd=(Button) findViewById(R.id.buttonAnd);
+
         mButtonEqual=(Button) findViewById(R.id.buttonEqual);
+        mButtonEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text=mNumbersTextView.getText();
+
+            }
+        });
+
         mButtonSqrt=(Button) findViewById(R.id.buttonSqrt);
+        mButtonStringHashMap.put(mButtonSqrt,"√");
 
         numbOnClickListener=new View.OnClickListener() {
             @Override
