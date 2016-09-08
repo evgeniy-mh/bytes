@@ -2,6 +2,7 @@ package com.mh.evgeniy.bytes;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -118,7 +119,15 @@ public class MainActivity extends AppCompatActivity {
         mButtonStringHashMap.put(mButton0,"0");
 
         mButtonDelLeft=(Button) findViewById(R.id.buttonDelLeft);
+
         mButtonDel=(Button) findViewById(R.id.buttonDel);
+        mButtonDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mNumbersTextView.setText("");
+            }
+        });
+
         mButtonChangeSign=(Button) findViewById(R.id.buttonChangeSign);
 
         mButtonLeftBracket=(Button) findViewById(R.id.buttonLeftBracket);
@@ -158,8 +167,7 @@ public class MainActivity extends AppCompatActivity {
         mButtonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CharSequence text=mNumbersTextView.getText();
-
+                Compute();
             }
         });
 
@@ -183,7 +191,44 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void Compute(){
+        String text= mNumbersTextView.getText().toString();
 
+        //while(!text.isEmpty()){
+            if(text.contains("*")) {
+                int mulInd=text.indexOf("*");
+
+                String tempDigit1="";
+                int temp=mulInd+1;
+                int lastInd=0;
+                while (temp<text.length() && Character.isDigit(text.charAt(temp))){ //получение числа справа от знака *
+                    tempDigit1=tempDigit1+text.charAt(temp);
+                    temp++;
+                    lastInd=temp;
+                }
+
+                String tempDigit2="";
+                temp=mulInd-1;
+                while (temp>=0 && Character.isDigit(text.charAt(temp))){ //получение числа слева от знака *
+                    tempDigit2=tempDigit2+text.charAt(temp);
+                    temp--;
+                }
+                tempDigit2=new StringBuilder(tempDigit2).reverse().toString();
+
+                int result=Integer.parseInt(tempDigit2)*Integer.parseInt(tempDigit1);
+                text=text.substring(lastInd);
+                text=result+text;
+
+                mNumbersTextView.setText(text);
+
+                Log.d("Computzz","mulInd="+mulInd);
+                Log.d("Computzz","tempDigit1="+tempDigit1);
+                Log.d("Computzz","tempDigit2="+tempDigit2);
+            }
+
+        //}
+
+    }
 
 
 }
