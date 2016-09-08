@@ -15,14 +15,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:background="@android:color/holo_blue_light"
-        android:padding="25dp"
         android:textAlignment="textEnd"
+        android:textSize="50sp"
+        android:padding="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium"/>
     
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:stretchColumns="*"
             >
 
@@ -315,6 +316,46 @@
             </TableRow>
 
         </TableLayout>
-        
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hex"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dec"
+            android:checked="false"
+            />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oct   "/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bin"/>
+
+    </RadioGroup>
+
+    </LinearLayout>
+    </ScrollView>
+
 
     </LinearLayout>

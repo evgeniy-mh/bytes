@@ -2,8 +2,13 @@ package com.mh.evgeniy.bytes;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
     Button mButtonEqual;
     Button mButtonSqrt;
 
+    private View.OnClickListener numbOnClickListener;
+    private HashMap<Button,String> mButtonStringHashMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,29 +64,69 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void InitUI(){
+        mButtonStringHashMap=new HashMap<>();
+
         mNumbersTextView=(TextView)findViewById(R.id.numbersTextView);
         mButtonMod=(Button) findViewById(R.id.buttonMod);
+
         mButtonA=(Button) findViewById(R.id.buttonA);
+        mButtonStringHashMap.put(mButtonA,"A");
+
         mButtonB=(Button) findViewById(R.id.buttonB);
+        mButtonStringHashMap.put(mButtonB,"B");
+
         mButtonC=(Button) findViewById(R.id.buttonC);
+        mButtonStringHashMap.put(mButtonC,"C");
+
         mButtonD=(Button) findViewById(R.id.buttonD);
+        mButtonStringHashMap.put(mButtonD,"D");
+
         mButtonE=(Button) findViewById(R.id.buttonE);
+        mButtonStringHashMap.put(mButtonE,"E");
+
         mButtonF=(Button) findViewById(R.id.buttonF);
+        mButtonStringHashMap.put(mButtonF,"F");
+
         mButton1=(Button) findViewById(R.id.button1);
+        mButtonStringHashMap.put(mButton1,"1");
+
         mButton2=(Button) findViewById(R.id.button2);
+        mButtonStringHashMap.put(mButton2,"2");
+
         mButton3=(Button) findViewById(R.id.button3);
+        mButtonStringHashMap.put(mButton3,"3");
+
         mButton4=(Button) findViewById(R.id.button4);
+        mButtonStringHashMap.put(mButton4,"4");
+
         mButton5=(Button) findViewById(R.id.button5);
+        mButtonStringHashMap.put(mButton5,"5");
+
         mButton6=(Button) findViewById(R.id.button6);
+        mButtonStringHashMap.put(mButton6,"6");
+
         mButton7=(Button) findViewById(R.id.button7);
+        mButtonStringHashMap.put(mButton7,"7");
+
         mButton8=(Button) findViewById(R.id.button8);
+        mButtonStringHashMap.put(mButton8,"8");
+
         mButton9=(Button) findViewById(R.id.button9);
+        mButtonStringHashMap.put(mButton9,"9");
+
         mButton0=(Button) findViewById(R.id.button0);
+        mButtonStringHashMap.put(mButton0,"0");
+
         mButtonDelLeft=(Button) findViewById(R.id.buttonDelLeft);
         mButtonDel=(Button) findViewById(R.id.buttonDel);
         mButtonChangeSign=(Button) findViewById(R.id.buttonChangeSign);
+
         mButtonLeftBracket=(Button) findViewById(R.id.buttonLeftBracket);
+        mButtonStringHashMap.put(mButtonLeftBracket,"(");
+
         mButtonRightBracket=(Button) findViewById(R.id.buttonRightBracket);
+        mButtonStringHashMap.put(mButtonRightBracket,")");
+
         mButtonDiv=(Button) findViewById(R.id.buttonDiv);
         mButtonRoL=(Button) findViewById(R.id.buttonRoL);
         mButtonRor=(Button) findViewById(R.id.buttonRor);
@@ -95,7 +143,24 @@ public class MainActivity extends AppCompatActivity {
         mButtonEqual=(Button) findViewById(R.id.buttonEqual);
         mButtonSqrt=(Button) findViewById(R.id.buttonSqrt);
 
+        numbOnClickListener=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                if(mButtonStringHashMap.containsKey (v)){
+                    mNumbersTextView.append(mButtonStringHashMap.get(v));
+                }
+
+            }
+        };
+
+        for(Map.Entry<Button,String> entry: mButtonStringHashMap.entrySet()){
+            Button b=entry.getKey();
+            b.setOnClickListener(numbOnClickListener);
+        }
     }
+
+
+
 
 }
